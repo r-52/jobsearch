@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jobsearch", "jobsearch\jobsearch.csproj", "{53D6D1F4-8ECC-4983-97AF-B66CB94CDBDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jobsearch.Data", "jobsearch.Data\jobsearch.Data.csproj", "{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53D6D1F4-8ECC-4983-97AF-B66CB94CDBDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D6D1F4-8ECC-4983-97AF-B66CB94CDBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D6D1F4-8ECC-4983-97AF-B66CB94CDBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D6D1F4-8ECC-4983-97AF-B66CB94CDBDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

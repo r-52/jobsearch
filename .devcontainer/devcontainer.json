@@ -1,0 +1,16 @@
+{
+    "name": "jobsearch",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "remoteEnv": {},
+    "forwardPorts": [
+        5000,
+        5001
+    ],
+    "settings": {},
+    "extensions": [
+		"ms-dotnettools.csharp",
+		"dotjoshjohnson.xml"
+	]
+}

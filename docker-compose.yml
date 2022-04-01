@@ -1,0 +1,32 @@
+version: '3.7'
+
+x-environment:
+    &default-environment
+    POSTGRES_USER: jobsearch
+    POSTGRES_PASSWORD: jobsearch
+    POSTGRES_DB: jobsearch_dev
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            <<: *default-environment
+        ports:
+            - 5000:5000
+            - 5001:5001
+        volumes:
+            - .:/workspace
+        user: jobsearch
+        command: sleep infinity
+    db:
+        image: "postgres:12"
+        restart: unless-stopped
+        environment: *default-environment
+        ports:
+            - 5432:5432
+        volumes:
+            - ../pg_data:/var/lib/postgresql/data
+            #- ../postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
