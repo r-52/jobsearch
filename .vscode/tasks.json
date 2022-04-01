@@ -19,6 +19,28 @@
                 "reveal": "silent"
             },
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "migration",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "ef",
+                "--startup-project",
+                "${workspaceFolder}/jobsearch/jobsearch.csproj",
+                "migrations",
+                "add",
+                "${input:nameOfMigration}",
+                "-p",
+                "${workspaceFolder}/jobsearch.Data/jobsearch.Data.csproj"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "nameOfMigration",
+            "type": "promptString",
+            "description": "name of migration"
         }
     ]
 }

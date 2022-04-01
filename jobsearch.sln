@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jobsearch", "jobsearch\jobs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jobsearch.Data", "jobsearch.Data\jobsearch.Data.csproj", "{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jobsearch.Core", "jobsearch.Core\jobsearch.Core.csproj", "{F04894CB-EE29-4B02-ADC9-DCFACEC53C02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA1513EE-B21B-4E08-BBE8-CE9FA8C3D166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F04894CB-EE29-4B02-ADC9-DCFACEC53C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F04894CB-EE29-4B02-ADC9-DCFACEC53C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F04894CB-EE29-4B02-ADC9-DCFACEC53C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F04894CB-EE29-4B02-ADC9-DCFACEC53C02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
