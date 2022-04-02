@@ -19,7 +19,10 @@ namespace jobsearch.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new JobConfiguration())
-                    .ApplyConfiguration(new JobTypeConfiguration());
+                    .ApplyConfiguration(new JobTypeConfiguration())
+                    .ApplyConfiguration(new TagConfiguration())
+                    .ApplyConfiguration(new TagUsageConfiguration())
+                    .ApplyConfiguration(new InstanceConfiguration());
         }
 
         public override int SaveChanges()
@@ -31,22 +34,24 @@ namespace jobsearch.Data
 
             foreach (var entry in modifiedEntries)
             {
-                var entity = entry.Entity as BaseModel;
+                var entity = entry.Entity as BaseCreationTrackerModel; // TODO
 
                 if (entry.State == EntityState.Added)
                 {
                     entity.CreatedAt = DateTime.Now;
-                    entity.Revision = 0;
                 }
 
                 entity.UpdatedAt = DateTime.Now;
-                entity.Revision += 1;
             }
 
             return base.SaveChanges();
         }
         #region DbSets
         public DbSet<JobEntity> Jobs { get; set; }
+        public DbSet<InstanceEntity> Instaces { get; set; }
+        public DbSet<TagEntity> Tags { get; set; }
+        public DbSet<TagUsageEntity> TagUsages { get; set; }
+        public DbSet<CompanyEntity> Companies { get; set; }
         #endregion
     }
 }

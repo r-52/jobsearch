@@ -1,20 +1,20 @@
 namespace jobsearch.Core.Models.EF
 {
-    public class JobEntity : BaseModel
+    public class JobEntity : BaseModel<int>
     {
         public string HeadlinePlain { get; set; }
 
         public string HeadlineHtml { get; set; }
 
-        public string BodyPlain { get; set; }
+        public string? BodyPlain { get; set; }
 
-        public string BodyHtml { get; set; }
+        public string? BodyHtml { get; set; }
 
-        public string IntroImageUrl { get; set; }
+        public string? IntroImageUrl { get; set; }
 
-        public string FooterImageUrl { get; set; }
+        public string? FooterImageUrl { get; set; }
 
-        public string ExternalApplyUrl { get; set; }
+        public string? ExternalApplyUrl { get; set; }
 
         public bool IsOnline { get; set; }
 
@@ -29,5 +29,9 @@ namespace jobsearch.Core.Models.EF
         public int JobTypeId { get; set; }
 
         public JobTypeEntity JobType { get; set; }
+
+        public int InstanceId { get; set; }
+
+        public InstanceEntity Instance { get; set; }
     }
 }

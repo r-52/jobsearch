@@ -1,6 +1,6 @@
 namespace jobsearch.Core.Models.EF
 {
-    public class JobTypeEntity : BaseModel
+    public class JobTypeEntity : BaseModel<int>
     {
         private ILazyLoader _lazyLoader;
 
