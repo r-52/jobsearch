@@ -6,7 +6,8 @@
     "remoteEnv": {},
     "forwardPorts": [
         5000,
-        5001
+        5001,
+        6006
     ],
     "settings": {},
     "extensions": [
