@@ -786,4 +786,5 @@ $RECYCLE.BIN/
 
 
 
-./pg_data
+./pg_data/*
+pg_data/
