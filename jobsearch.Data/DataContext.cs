@@ -22,6 +22,9 @@ namespace jobsearch.Data
                     .ApplyConfiguration(new JobTypeConfiguration())
                     .ApplyConfiguration(new TagConfiguration())
                     .ApplyConfiguration(new TagUsageConfiguration())
+                    .ApplyConfiguration(new TranslationConfiguration())
+                    .ApplyConfiguration(new LanguageConfiguration())
+                    .ApplyConfiguration(new CompanyAgentConfiguration())
                     .ApplyConfiguration(new InstanceConfiguration());
         }
 
@@ -34,14 +37,17 @@ namespace jobsearch.Data
 
             foreach (var entry in modifiedEntries)
             {
-                var entity = entry.Entity as BaseCreationTrackerModel; // TODO
-
-                if (entry.State == EntityState.Added)
+                if (entry.Entity.GetType().IsSubclassOf(typeof(BaseCreationTrackerModel)))
                 {
-                    entity.CreatedAt = DateTime.Now;
-                }
+                    var entity = entry.Entity as BaseCreationTrackerModel; // TODO
 
-                entity.UpdatedAt = DateTime.Now;
+                    if (entry.State == EntityState.Added)
+                    {
+                        entity.CreatedAt = DateTime.Now;
+                    }
+
+                    entity.UpdatedAt = DateTime.Now;
+                }
             }
 
             return base.SaveChanges();
@@ -52,6 +58,9 @@ namespace jobsearch.Data
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<TagUsageEntity> TagUsages { get; set; }
         public DbSet<CompanyEntity> Companies { get; set; }
+        public DbSet<CompanyAgentEntity> CompanyAgents { get; set; }
+        public DbSet<TranslationEntity> Translations { get; set; }
+        public DbSet<LanguageEntity> Languages { get; set; }
         #endregion
     }
 }

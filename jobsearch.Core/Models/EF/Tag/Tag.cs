@@ -6,9 +6,11 @@ namespace jobsearch.Core.Models.EF
 
         public string DescriptionTranslationKey { get; set; }
 
+        #region FK Instance
         public int InstanceId { get; set; }
 
         public InstanceEntity Instance { get; set; }
+        #endregion
 
         public uint UsageCount { get; set; }
     }

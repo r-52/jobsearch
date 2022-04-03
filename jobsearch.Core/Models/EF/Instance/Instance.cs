@@ -17,5 +17,9 @@ namespace jobsearch.Core.Models.EF
         public string? LogoUrl { get; set; }
 
         public string? Imprint { get; set; }
+
+        public int LanguageId { get; set; }
+
+        public LanguageEntity Language { get; set; }
     }
 }
