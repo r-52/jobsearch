@@ -5,7 +5,6 @@
     "workspaceFolder": "/workspace",
     "remoteEnv": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "APSNETCORE_URLS": "http://+:5000,https://+:5001"
     },
     "forwardPorts": [
         5000,
@@ -14,9 +13,10 @@
     ],
     "settings": {},
     "extensions": [
-        "angular.ng-template",
-        "ms-dotnettools.csharp",
-        "dotjoshjohnson.xml",
-        "editorconfig.editorconfig"
-    ]
+		"angular.ng-template",
+		"ms-dotnettools.csharp",
+		"dotjoshjohnson.xml",
+		"editorconfig.editorconfig",
+		"eamodio.gitlens"
+	]
 }
