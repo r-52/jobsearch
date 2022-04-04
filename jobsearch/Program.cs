@@ -9,6 +9,17 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
+builder.Services.AddStackExchangeRedisCache(options =>
+ {
+     options.Configuration = builder.Configuration.GetConnectionString("DefaultRedisConnection");
+ });
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
+    options.Cookie.IsEssential = true;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -20,6 +31,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 var app = builder.Build();
+app.UseSession();
 
 if (app.Environment.IsDevelopment())
 {
