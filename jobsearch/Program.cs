@@ -1,43 +1,23 @@
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<DataContext>(options =>
-{
-    options.UseNpgsql(connectionString);
-});
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-
-builder.Services.AddStackExchangeRedisCache(options =>
- {
-     options.Configuration = builder.Configuration.GetConnectionString("DefaultRedisConnection");
- });
-
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(60);
-    options.Cookie.IsEssential = true;
-});
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "jobsearch API",
-        Description = "the jobsearch api",
-        Version = "v1"
-    });
-});
+builder.AddDatabaseContext();
+builder.AddLogging();
+builder.AddRedisCacheAndSession();
+builder.AddSwagger();
+builder.Services.AddSpaStaticFiles(configuration: options => { options.RootPath = "wwwroot"; });
 var app = builder.Build();
 app.UseSession();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+#if DEBUG
+app.UseSwagger();
+app.UseSwaggerUI();
+#endif
+
+app.UseSpaStaticFiles();
+app.UseStaticFiles();
+#if DEBUG
+app.UseAngularLocalDevelopmentServer("../jobsearch.Client");
+#endif
 
 
 using (var scope = app.Services.CreateScope())
@@ -47,5 +27,4 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.MapGet("/", () => "Hello World!");
-
 app.Run();

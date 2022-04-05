@@ -50,11 +50,11 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 
 EXPOSE 5000
-EXPOSE 5001
+EXPOSE 7022
 EXPOSE 6006
 
 
-
+SHELL ["/bin/bash", "-c"]
 RUN npm i -g @angular/cli && npm i -g @storybook/cli
 
 WORKDIR /workspaces/jobsearch
