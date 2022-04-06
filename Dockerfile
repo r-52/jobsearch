@@ -24,7 +24,7 @@ RUN apt-get -y update --no-install-recommends \
     wget \
     apt-transport-https \
     && apt-get autoremove -y \
-    && apt-get clean -y 
+    && apt-get clean -y
 
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && dpkg -i packages-microsoft-prod.deb
 
@@ -55,7 +55,6 @@ EXPOSE 6006
 
 
 SHELL ["/bin/bash", "-c"]
-RUN npm i -g @angular/cli && npm i -g @storybook/cli
+RUN npm i -g @angular/cli && npm i -g @storybook/cli && npm i --global yarn
 
 WORKDIR /workspaces/jobsearch
-

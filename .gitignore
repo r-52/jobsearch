@@ -790,3 +790,5 @@ $RECYCLE.BIN/
 pg_data/
 **/wwwroot/*
 **/release/*
+**/.storybook/*
+**/redis_data/*
