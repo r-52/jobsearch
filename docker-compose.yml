@@ -18,7 +18,7 @@ services:
             - 7022:7022
             - 6006:6006
         volumes:
-            - .:/workspace
+            - ..:/workspaces
         user: jobsearch
         command: sleep infinity
     redis:
