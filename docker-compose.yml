@@ -5,6 +5,8 @@ x-environment:
     POSTGRES_USER: jobsearch
     POSTGRES_PASSWORD: jobsearch
     POSTGRES_DB: jobsearch_dev
+    ASPNETCORE_ENVIRONMENT: Development
+    APSNETCORE_URLS: "http://0.0.0.0:4000,https://0.0.0.0:3000"
 
 services:
     app:
@@ -14,9 +16,10 @@ services:
         environment:
             <<: *default-environment
         ports:
-            - 5000:5000
-            - 7022:7022
-            - 6006:6006
+            - 4200:4200 # angular ng s
+            - 3000:3000 # https dotnet run
+            - 4000:4000 # http dotnet run
+            - 6006:6006 # storybook
         volumes:
             - ..:/workspaces
         user: jobsearch
