@@ -21,7 +21,7 @@ services:
             - 4000:4000 # http dotnet run
             - 6006:6006 # storybook
         volumes:
-            - ..:/workspaces
+            - .:/workspace
         user: jobsearch
         command: sleep infinity
     redis:
@@ -40,4 +40,3 @@ services:
         volumes:
             - ./pg_data:/var/lib/postgresql/data
             #- ../postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-

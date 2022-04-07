@@ -1,5 +1,5 @@
-all: clean restore publish build
-
+run:
+	dotnet watch --project=jobsearch/jobsearch.csproj
 
 clean:
 	dotnet clean

@@ -57,4 +57,4 @@ EXPOSE 6006
 SHELL ["/bin/bash", "-c"]
 RUN npm i -g @angular/cli && npm i -g @storybook/cli && npm i --global yarn
 
-WORKDIR /workspaces/jobsearch
+WORKDIR /workspace/jobsearch

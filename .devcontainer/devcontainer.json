@@ -2,7 +2,7 @@
     "name": "jobsearch",
     "dockerComposeFile": "../docker-compose.yml",
     "service": "app",
-    "workspaceFolder": "/workspaces",
+    "workspaceFolder": "/workspace",
     "remoteEnv": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "APSNETCORE_URLS":"http://*:5000,https://*:5001"
