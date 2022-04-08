@@ -2,11 +2,12 @@ using System.Linq.Expressions;
 
 namespace jobsearch.Data
 {
-    public class BaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> where TEntity : class
     {
         internal DataContext _context;
 
         internal DbSet<TEntity> _dbSet;
+
 
         public BaseRepository(DataContext ctxt)
         {
@@ -14,63 +15,39 @@ namespace jobsearch.Data
             this._dbSet = ctxt.Set<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> Get(
-                Expression<Func<TEntity, bool>> filter = null,
-                Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-                string includeProperties = "")
+        public virtual async Task<bool> DeleteAsync(TKey id)
         {
-            IQueryable<TEntity> query = _dbSet;
-
-            if (filter != null)
+            var elem = await this.GetByIdAsync(id);
+            if (elem is null)
             {
-                query = query.Where(filter);
+                return false;
             }
-
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
+            this._dbSet.Remove(elem);
+            return true;
         }
 
-        public virtual TEntity GetByID(object id)
+        public virtual async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.Find(id);
+            var x = await this._dbSet.Where(predicate).ToListAsync();
+            return x;
         }
 
-        public virtual void Insert(TEntity entity)
+        public async virtual Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            _dbSet.Add(entity);
+            var x = await this._dbSet.ToListAsync();
+            return x;
         }
 
-        public virtual void Delete(object id)
+        public async virtual Task<TEntity> GetByIdAsync(TKey id)
         {
-            TEntity entityToDelete = _dbSet?.Find(id);
-            Delete(entityToDelete);
+            var x = await this._dbSet.FindAsync(id);
+            return x;
         }
 
-        public virtual void Delete(TEntity entityToDelete)
+        public async virtual Task<bool> InsertAsync(TEntity entity)
         {
-            if (_context.Entry(entityToDelete).State == EntityState.Detached)
-            {
-                _dbSet.Attach(entityToDelete);
-            }
-            _dbSet.Remove(entityToDelete);
-        }
-
-        public virtual void Update(TEntity entityToUpdate)
-        {
-            _dbSet.Attach(entityToUpdate);
-            _context.Entry(entityToUpdate).State = EntityState.Modified;
+            var x = await this._dbSet.AddAsync(entity);
+            return x != null;
         }
     }
 }

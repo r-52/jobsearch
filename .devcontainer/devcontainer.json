@@ -8,8 +8,9 @@
         "APSNETCORE_URLS":"http://*:5000,https://*:5001"
     },
     "forwardPorts": [
-        5000,
-        5001,
+        3000,
+        4000,
+        4200,
         6006
     ],
     "settings": {},

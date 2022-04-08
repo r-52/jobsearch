@@ -1,7 +1,7 @@
 
 public static class ApplicationBuilderExtension
 {
-    public static IApplicationBuilder UseAngularLocalDevelopmentServer(this IApplicationBuilder app, string angularProject, string angularUrl = "http://localhost:4200", string swaggerUrl = "/swagger/index.html")
+    public static IApplicationBuilder UseAngularLocalDevelopmentServer(this IApplicationBuilder app, string angularProject, string angularUrl = "http://localhost:4200", bool useSwagger = true, string swaggerUrl = "/swagger/index.html")
     {
         app.Use(async (context, next) =>
         {
@@ -11,14 +11,14 @@ public static class ApplicationBuilderExtension
             }
             catch (System.Net.Http.HttpRequestException)
             {
-                if (!string.IsNullOrEmpty(swaggerUrl?.Trim()))
+                if (useSwagger)
                 {
                     context.Response.Redirect(swaggerUrl);
-                    return;
                 }
-
-                throw;
-
+                else
+                {
+                    throw;
+                }
             }
         }).UseSpa(spa =>
         {
