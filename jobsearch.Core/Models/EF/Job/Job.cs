@@ -16,6 +16,8 @@ namespace jobsearch.Core.Models.EF
 
         public string? ExternalApplyUrl { get; set; }
 
+        public string Slug { get; set; }
+
         public bool IsOnline { get; set; }
 
         public bool IsDraft { get; set; }

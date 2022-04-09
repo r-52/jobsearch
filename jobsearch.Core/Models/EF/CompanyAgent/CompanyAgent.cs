@@ -6,6 +6,8 @@ namespace jobsearch.Core.Models.EF
 
         public string? LastName { get; set; }
 
+        public string Slug { get; set; }
+
         public string Email { get; set; }
 
         public string? AvatarUrl { get; set; }

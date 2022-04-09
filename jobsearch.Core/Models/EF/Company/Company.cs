@@ -16,6 +16,8 @@ namespace jobsearch.Core.Models.EF
 
         public string Name { get; set; }
 
+        public string Slug { get; set; }
+
         public string? ProfileHeadline { get; set; }
 
         public string? ProfileHtmlBody { get; set; }
